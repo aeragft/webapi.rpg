@@ -13,8 +13,8 @@ namespace Core.Model
         public Race Race { get; set; }
         public int JobID { get; set; }
         public Job Job { get; set; }
-        //public int  WeaponId { get; set; }
-        //public Weapon Weapon { get; set; }
+        public int WeaponId { get; set; }
+        public Weapon Weapon { get; set; }
 
     }
 }

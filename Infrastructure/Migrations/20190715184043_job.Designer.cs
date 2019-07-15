@@ -4,14 +4,16 @@ using Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    partial class RpgContextModelSnapshot : ModelSnapshot
+    [Migration("20190715184043_job")]
+    partial class job
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,13 +39,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("Race");
 
-                    b.Property<int>("WeaponId");
-
                     b.HasKey("ID");
 
                     b.HasIndex("JobID");
-
-                    b.HasIndex("WeaponId");
 
                     b.ToTable("Characters");
                 });
@@ -91,7 +89,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("WeaponId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skill");
                 });
 
             modelBuilder.Entity("Core.Model.Weapon", b =>
@@ -110,7 +108,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Weapons");
+                    b.ToTable("Weapon");
                 });
 
             modelBuilder.Entity("Core.Model.Character", b =>
@@ -118,11 +116,6 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Model.Job", "Job")
                         .WithMany()
                         .HasForeignKey("JobID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Core.Model.Weapon", "Weapon")
-                        .WithMany()
-                        .HasForeignKey("WeaponId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

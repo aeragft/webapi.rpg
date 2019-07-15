@@ -10,8 +10,8 @@ namespace Infrastructure.Configuration
 
         public DbSet<Character> Characters { get; set; }
         public DbSet<Job> Jobs { get; set; }
-        //public DbSet<Weapon> Weapons { get; set; }
-        //public DbSet<Skill> Skills { get; set; }
+        public DbSet<Weapon> Weapons { get; set; }
+        public DbSet<Skill> Skills { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,8 +25,8 @@ namespace Infrastructure.Configuration
         {
             builder.Entity<Character>();
             builder.Entity<Job>();
-            //builder.Entity<Weapon>();
-            //builder.Entity<Skill>();
+            builder.Entity<Weapon>();
+            builder.Entity<Skill>();
 
         }
     }

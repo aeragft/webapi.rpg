@@ -6,35 +6,35 @@ using System.Linq;
 
 namespace Infrastructure.Repository
 {
-    public class CharaterRepository : IRepository<Character>
+    public class SkillRepository : IRepository<Skill>
     {
         private readonly RpgContext _db;
 
-        public CharaterRepository(RpgContext db)
+        public SkillRepository(RpgContext db)
         {
             _db = db;
         }
-
-        public void Add(Character write)
+    
+        public void Add(Skill write)
         {
-           if(write != null)
+            if (write != null)
             {
                 _db.Add(write);
                 _db.SaveChanges();
             }
         }
 
-        public Character Find(int id) => _db
-            .Characters.OfType<Character>()
-            .FirstOrDefault(c => c.ID == id);
+        public Skill Find(int id) => _db
+            .Characters.OfType<Skill>()
+            .FirstOrDefault(s => s.ID == id);
 
-        public IEnumerable<Character> Get() => _db
-            .Characters.OfType<Character>()
+        public IEnumerable<Skill> Get() => _db
+            .Characters.OfType<Skill>()
             .ToList();
 
-        public Character Remove(Character write)
+        public Skill Remove(Skill write)
         {
-            if(write != null)
+            if (write != null)
             {
                 _db.Remove(write);
                 _db.SaveChanges();
@@ -42,9 +42,9 @@ namespace Infrastructure.Repository
             return write;
         }
 
-        public Character Update(Character write)
+        public Skill Update(Skill write)
         {
-            if(write != null)
+            if (write != null)
             {
                 _db.Update(write);
                 _db.SaveChanges();

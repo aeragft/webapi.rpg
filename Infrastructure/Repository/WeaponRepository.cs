@@ -6,35 +6,35 @@ using System.Linq;
 
 namespace Infrastructure.Repository
 {
-    public class CharaterRepository : IRepository<Character>
+    class WeaponRepository : IRepository<Weapon>
     {
         private readonly RpgContext _db;
 
-        public CharaterRepository(RpgContext db)
+        public WeaponRepository(RpgContext db)
         {
             _db = db;
         }
 
-        public void Add(Character write)
+        public void Add(Weapon write)
         {
-           if(write != null)
+            if(write != null)
             {
                 _db.Add(write);
                 _db.SaveChanges();
             }
         }
 
-        public Character Find(int id) => _db
-            .Characters.OfType<Character>()
-            .FirstOrDefault(c => c.ID == id);
+        public Weapon Find(int id) => _db
+            .Characters.OfType<Weapon>()
+            .FirstOrDefault(w => w.ID == id);
 
-        public IEnumerable<Character> Get() => _db
-            .Characters.OfType<Character>()
+        public IEnumerable<Weapon> Get() => _db
+            .Characters.OfType<Weapon>()
             .ToList();
 
-        public Character Remove(Character write)
+        public Weapon Remove(Weapon write)
         {
-            if(write != null)
+            if (write != null)
             {
                 _db.Remove(write);
                 _db.SaveChanges();
@@ -42,9 +42,9 @@ namespace Infrastructure.Repository
             return write;
         }
 
-        public Character Update(Character write)
+        public Weapon Update(Weapon write)
         {
-            if(write != null)
+            if (write != null)
             {
                 _db.Update(write);
                 _db.SaveChanges();

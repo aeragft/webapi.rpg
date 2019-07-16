@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Infrastructure.Repository
 {
-    public class CharaterRepository : IRepository<Character>
+    public class CharacterRepository : IRepository<Character>
     {
         private readonly RpgContext _db;
 
-        public CharaterRepository(RpgContext db)
+        public CharacterRepository(RpgContext db)
         {
             _db = db;
         }

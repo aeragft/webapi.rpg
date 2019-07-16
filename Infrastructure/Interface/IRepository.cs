@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Infrastructure.Interface
 {
-    interface IRepository<T>
+    public interface IRepository<T>
     {
         T Find(int id);
         IEnumerable<T> Get();

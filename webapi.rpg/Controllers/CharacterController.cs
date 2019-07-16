@@ -9,15 +9,16 @@ namespace webapi.rpg.Controllers
     [ApiController]
     public class CharacterController : ControllerBase
     {
-        static List<Character> characters = new List<Character>();
-        private readonly CharaterRepository charaterRepository;
+        static readonly List<Character> characters = new List<Character>();
+
+        public CharacterRepository CharacterRepository;
 
         public CharacterController() { }
 
         [HttpGet]
         public IActionResult Characters()
         {
-            return Ok(charaterRepository.Get());
+            return Ok(CharacterRepository.Get());
 
         }
 
@@ -31,7 +32,7 @@ namespace webapi.rpg.Controllers
         [HttpPost]
         public IActionResult PostCharacter([FromBody] Character character)
         {
-            charaterRepository.Add(character);
+            CharacterRepository.Add(character);
 
             return Ok(character);
         }
@@ -43,7 +44,7 @@ namespace webapi.rpg.Controllers
 
             obj.Gender = character.Gender;
 
-            return Ok(charaterRepository.Update(obj));
+            return Ok(CharacterRepository.Update(obj));
         }
 
         [HttpDelete("{id}")]
@@ -52,7 +53,7 @@ namespace webapi.rpg.Controllers
             var obj = FindCharacter(Id);
 
             if (obj != null)
-                return Ok(charaterRepository.Remove(obj));
+                return Ok(CharacterRepository.Remove(obj));
 
             return NotFound(obj);
         }
@@ -60,7 +61,7 @@ namespace webapi.rpg.Controllers
 
         private Character FindCharacter(int Id)
         {
-            return charaterRepository.Find(Id);
+            return CharacterRepository.Find(Id);
         }
     }
 }
